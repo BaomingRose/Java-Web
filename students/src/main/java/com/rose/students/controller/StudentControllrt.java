@@ -17,11 +17,11 @@ public class StudentControllrt {
     private StudentDao studentDao;
 
 
-@RequestMapping("hello")
-public  String hello(Model model){
-    List<Student> list = studentDao.queryAllStudent();
-    model.addAttribute("student", list.get(0));
-    return "hello";
+    @RequestMapping("hello")
+    public  String hello(Model model){
+        List<Student> list = studentDao.queryAllStudent();
+        model.addAttribute("student", list.get(0));
+        return "hello";
 }
 
 
