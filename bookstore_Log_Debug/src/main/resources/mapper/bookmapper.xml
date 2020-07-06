@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rose.bookstore.dao.BookDao">
+
+    <insert   id="insertNewBook" parameterType="com.rose.bookstore.pojo.Book" >
+      insert into book(name,author,publisher,price,category) values(#{book.name},#{book.author},#{book.publisher},#{book.price},#{book.category})
+    </insert>
+
+    <select id="queryAllBooks" resultType="com.rose.bookstore.pojo.Book">
+        select * from book
+    </select>
+
+    <select id="queryById" resultType="com.rose.bookstore.pojo.Book">
+        select * from book where id=#{id}
+    </select>
+
+    <select id="queryByName" resultType="com.rose.bookstore.pojo.Book">
+        select * from book where name=#{name}
+    </select>
+
+    <select id="queryByAuthor" resultType="com.rose.bookstore.pojo.Book">
+        select * from book where author=#{author}
+    </select>
+
+
+    <select id="queryByPublisher" resultType="com.rose.bookstore.pojo.Book">
+        select * from book where author=#{publisher}
+    </select>
+
+    <select id="queryByCategory" resultType="com.rose.bookstore.pojo.Book">
+        select * from book where author=#{category}
+    </select>
+
+    <delete id="DeleteBook">
+        delete from book where id=#{id}
+    </delete>
+
+    <update id="ModifyBook" parameterType="com.rose.bookstore.pojo.Book">
+        update book set name=#{book.name},author=#{book.author},publisher=#{book.publisher},price=#{book.price},category=#{book.category} where id=#{book.id}
+    </update>
+
+    <select id="queryRangeBooks" resultType="com.rose.bookstore.pojo.Book">
+        select * from book limit #{arg0},#{arg1}
+    </select>
+</mapper>
