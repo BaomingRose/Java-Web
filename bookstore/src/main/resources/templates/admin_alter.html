@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rose书城_管理员_修改图书</title>
+</head>
+<body>
+<center>
+    <table>
+        <form action="/bookstore/alterControl" method="post">
+            <tr><td>书籍号:</td><td><input type="text" th:value="${book.id}" name="book_id" readonly/></td></tr>
+            <tr><td>名字：</td><td><input type="text" name="book_name" th:value="${book.name}"/></td></tr>
+            <tr><td>作者：</td><td><input type="text" name="book_author" th:value="${book.author}"/></td></tr>
+            <tr><td>出版社：</td><td><input type="text" name="book_publisher" th:value="${book.publisher}"/></td></tr>
+            <tr><td>价格：</td><td><input type="text" name="book_price" th:value="${book.price}" /></td></tr>
+            <tr><td>类别：</td><td><input type="text" name="book_category" th:value="${book.category}"/></td></tr>
+            <tr><td>图书图片：</td><td><input type="file" name="book_img" value="选择图片" accept="image/*"/></td></tr>
+            <tr><td style="text-align: center;" colspan="2"><input type="submit" value="提交修改" formenctype="multipart/form-data" name="book_img" accept="image/*"/></td></tr>
+        </form>
+        <img th:src="@{${'../static/img/book_img/' + book.id + '.jpg'}}" height="400" width="300"/>
+    </table>
+</center>
+</body>
+</html>

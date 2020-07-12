@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rose书城_详情页</title>
+</head>
+<body>
+<center>
+    <img th:src="@{${'/static/img/book_img/' + book.id + '.jpg'}}" height="400" width="300"/>
+    <table>
+        <tr><td width="200">书籍号：</td><td th:text="${book.id}"></td> </tr>
+        <tr><td width="200">书名：</td><td th:text="${book.name}"></td> </tr>
+        <tr><td width="200">作者：</td><td th:text="${book.author}"></td> </tr>
+        <tr><td width="200">出版社：</td><td th:text="${book.publisher}"></td> </tr>
+        <tr><td width="200">价格：</td><td th:text="${book.price}"></td> </tr>
+        <tr><td width="200">类别：</td><td th:text="${book.category}"></td> </tr>
+    </table>
+    <br/>
+    <form action="/bookstore/add_cart" method="post">
+        <input type="text" value="1" name="book_num"/>
+        <input type="hidden" th:value="${book.id}" name="book_id"/>
+        <input type="submit" value="加入购物车" />
+    </form>
+</center>
+</body>
+</html>

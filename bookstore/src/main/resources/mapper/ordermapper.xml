@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rose.bookstore.dao.OrderDao">
+
+    <insert id="insertOrder" parameterType="com.rose.bookstore.pojo.OrderForm" >
+      insert into orders(username,useraddress,userphone,bookid,bookname,done,num,price) values(#{orderForm.userName},#{orderForm.userAddress},#{orderForm.userPhone},#{orderForm.bookid},#{orderForm.bookName},#{orderForm.done},#{orderForm.num},#{orderForm.price})
+    </insert>
+
+    <select id="getIdLast" resultType="java.lang.Integer">
+      select  last_insert_id()
+    </select>
+
+    <update id="doneOrder" parameterType="java.lang.Integer">
+        update orders set done=true where id=#{orderId}
+    </update>
+
+    <select id="queryAllOrder" resultType="com.rose.bookstore.pojo.OrderForm">
+        select * from orders
+    </select>
+
+    <select id="queryUndoneOrder" resultType="com.rose.bookstore.pojo.OrderForm">
+        select * from orders where done=false
+    </select>
+</mapper>

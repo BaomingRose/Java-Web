@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rose书城_购物车</title>
+    <style>
+        td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h1 th:text="${user.name + ' 的购物车'}"></h1>
+    <table>
+        <table>
+            <tr><td width="100">书籍号</td>
+                <td width="300">书籍名称</td>
+                <td width="200">作者</td>
+                <td width="300">出版社</td>
+                <td width="150">价格</td>
+                <td width="150">类别</td>
+                <td width="100">数量</td>
+                <td width="100"></td>
+                <td width="100"></td>
+            </tr>
+        </table>
+            <hr/>
+        <table>
+            <tr th:each="bookitem,memberStat:${bookitems}">
+                <td th:text="${bookitem.book.id}" width="100"></td>
+                <td th:text="${bookitem.book.name}" width="300"></td>
+                <td th:text="${bookitem.book.author}" width="200"></td>
+                <td th:text="${bookitem.book.publisher}" width="300"></td>
+                <td th:text="${bookitem.book.price}" width="150"></td>
+                <td th:text="${bookitem.book.category}" width="150"></td>
+                <td th:text="${bookitem.num}" width="100"></td>
+                <td width="100"><a th:href="@{${'/bookstore/remove_cart?book_id=' + bookitem.book.id}}">移除</a></td>
+                <td width="100"><a th:href="@{${'/bookstore/show_order_submit?book_id=' + bookitem.book.id + '&book_name=' + bookitem.book.name + '&book_num=' + bookitem.num + '&book_price='+ bookitem.book.price }}">下单</a></td>
+            </tr>
+        </table>
+        <br/><hr/>
+        <p> <span>共计 </span>
+        <span style="color: #2B66A5" th:text="${ total}"></span>
+            <span> 元</span>
+        </p>
+
+
+    </table>
+</center>
+<br><br>
+<p align="right">
+<a href="/bookstore/bookdatas?page=0">返回首页</a>
+</p>
+
+</body>
+</html>

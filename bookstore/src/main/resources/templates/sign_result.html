@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rose书城_注册成功</title>
+</head>
+<body>
+<center>
+    <p>恭喜你！注册成功！</p>
+    <h1 style="color: blue;" th:text="'您的账号为：  ' + ${user.id}" />
+    <p>一定要记得呕！</p>
+    <a href="/bookstore/login"><font color="blue">去登陆</font></a>
+</center>
+</body>
+</html>

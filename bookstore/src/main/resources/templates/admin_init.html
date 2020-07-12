@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rose书城_管理员</title>
+    <style type="text/css">
+        body {
+            height: 100%;
+            font-family: JetBrains Mono Medium;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* background-color: #0e92b3; */
+            background-size: 100% 100%;
+        }
+
+        td {
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div>
+            <p>
+                <br/>
+                <br/>
+            </p>
+        </div>
+        <div>
+            <big>
+            <form action="/bookstore/queryVague" method="get">
+            <span >Serch</span>
+                <div class="input-wrapper">
+            <input style="width:500px; heigth:100px" type="text" name="str_vague"/>
+                </div>
+                <div class="input-wrapper">
+            <input style="width:100px; heigth:100" type="submit" value="查询"/>
+                </div>
+            </form>
+            </big>
+        </div>
+        <div>
+            <p>
+            <br/>
+            <br/>
+            <br/>
+            </p>
+
+        </div>
+        <div>
+            <table>
+                <tr><td><a style="color: cyan;" href="/bookstore/admin_queryAllBooks"><font size="6px">查看所有图书</font></a></td></tr>
+                <tr><td><a style="color: deeppink" href="/bookstore/show_all_order"><font size="6px">已下单图书</font></a></td></tr>
+                <tr><td><a style="color: brown" href="/bookstore/insertBook"><font size="6px">新增图书</font></a></td></tr>
+            </table>
+        </div>
+    </center>
+
+</body>
+</html>

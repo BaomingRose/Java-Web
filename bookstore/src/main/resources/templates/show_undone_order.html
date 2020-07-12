@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rose书城_管理员_待完成订单</title>
+    <style>
+        td {
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <h1>未完成订单</h1>
+    <hr/>
+    <table>
+        <tr><td>订单号</td><td>用户名</td><td>用户住址</td><td>用户电话</td><td>书籍号</td><td>书籍名称</td><td>书籍数量</td><td>总价</td></tr>
+        <tr th:each="order,memberStat:${order_list}">
+            <td th:text="${order.id}" width="100"></td>
+            <td th:text="${order.userName}" width="200"></td>
+            <td th:text="${order.userAddress}" width="300"></td>
+            <td th:text="${order.userPhone}" width="300"></td>
+            <td th:text="${order.bookid}" width="150"></td>
+            <td th:text="${order.bookName}" width="300"></td>
+            <td th:text="${order.num}" width="100"></td>
+            <td th:text="${order.price}" width="150"></td>
+            <td width="100"><a th:href="@{'/bookstore/doneOrder?book_id=' + ${order.id}}">完成</a></td>
+            </td>
+        </tr>
+    </table>
+</center>
+<br/><br/><br/>
+<p align="center">
+    <a href="/bookstore/adminInit">返回首页</a>
+</p>
+
+</body>
+</html>

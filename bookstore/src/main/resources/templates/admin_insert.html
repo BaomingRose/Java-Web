@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rose书城_管理员_添加新书</title>
+</head>
+<body>
+<center>
+    <table>
+        <form action="/bookstore/insertControl" method="post">
+            <tr><td>新书名字为：</td><td><input type="text" name="book_name"/></td></tr>
+            <tr><td>新书作者为：</td><td><input type="text" name="book_author"/></td></tr>
+            <tr><td>新书出版社为：</td><td><input type="text" name="book_publisher"/></td></tr>
+            <tr><td>新书价格为：</td><td><input type="text" name="book_price"/></td></tr>
+            <tr><td>新书类别为：</td><td><input type="text" name="book_category"/></td></tr>
+            <tr><td>图书图片：</td><td><input type="file" name="book_img" value="插入图片" accept="image/*"/></td></tr>
+            <tr><td style="text-align: center;" colspan="2"><input type="submit" formenctype="multipart/form-data" value="提交插入"/></td></tr>
+        </form>
+    </table>
+</center>
+</body>
+</html>
