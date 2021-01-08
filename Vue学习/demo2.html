@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}
+			<p>Using mustaches: {{rawHtml}}</p>
+			<p v-html="rawHtml">Using v-html directive: </p>
+		</div>
+		
+		<script type="text/javascript">
+			var data = { message : 1, rawHtml : '<span style="color:red">this is should be red</span>'};
+			var vm = new Vue({
+				el : '#app',
+				data : data,
+				
+				//生命周期函数  
+				beforeCreate:function (){  
+					console.log('beforeCreate');  
+				},  
+				
+				created:function () {  
+					console.log('created');  
+				},  
+				
+				beforeMount:function () {  
+				    console.log('beforeMount');  
+				},  
+				
+				beforeUpdate:function () {  
+				    console.log(this.message);  
+				    console.log('beforeUpdate');  
+				},  
+				
+				updated:function () {  
+				    console.log('updated');  
+				}  
+			});
+			
+			//观察a变量的变化
+			vm.$watch('a', function(newVal, oldVal) {
+				console.log(newVal, oldVal);
+			})
+			
+			//加上$和普通变量区分，修改a变量
+			vm.$data.message = "text.......";
+		</script>
+	</body>
+	
+</html>
