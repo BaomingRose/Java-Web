@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--循环的使用，遍历数组-->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<li v-for="item in items">
+				{{item.message}}
+			</li>
+		</div>
+		
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+		<script>
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					//定义一个数组，数组里3个对象，[]表示数组，{}表示对象
+					items: [
+						{message: 'haha'},
+						{message: 'hehe'},
+						{message: 'dada'},
+						{message: 'dudu'}
+					]
+				},
+			});
+		</script>
+	</body>
+</html>
