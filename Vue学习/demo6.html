@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!--按钮组件绑定事件-->
+			<button v-on:click="sayHi()">click me</button>
+		</div>
+		
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+		<script>
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					message: "hahahha"
+				},
+				methods: {
+					sayHi: function() {
+						//使用该对象的message
+						alert(this.message);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
