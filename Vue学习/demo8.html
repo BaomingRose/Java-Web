@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!--组件，自定义组件-->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!--传递给组件的值-->
+			<my_sig v-for="item in items" v-bind:para="item"></my_sig>
+		</div>
+		
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+		<script>
+			//定义一个叫“my_sig”的标签
+			Vue.component("my_sig", {
+				//传递参数
+				props:['para'],
+				template: '<li>{{para}}</li>',
+			});
+			
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					message: "123",
+					items: ["java", "C++", "Linux"]
+				},
+			});
+		</script>
+	</body>
+</html>
