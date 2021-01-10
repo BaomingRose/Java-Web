@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--网络通信处理-->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="vue">
+			{{info.name}}
+			<p>{{info.address.country}}</p>
+			
+			<a v-bind:href="info.url">点我</a>
+		</div>
+		
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			var vm = new Vue({
+				el: "#vue",
+				data: {
+					message: "123",
+					sex: "",
+					ch:""
+				},
+				
+				//钩子函数，程序执行的时候，插入中间去执行，加载AJAX建议在mounted去实现，
+				//链式编程，先获取get请求，然后获取response，然后执行控制台打印response的内容
+				//=>是ES6新特性，IDEA要切换js语言版本，很多浏览器不支持
+				mounted() {
+					//axios.get('data.json').then(response=>(console.log(response.data)));
+					//response.data，表示接受到的包所有数据，而不是内容中的data字段，而response只是定义的一个单词
+					axios.get('data.json').then(r=>(this.info=r.data));
+				},
+				
+				//也是钩子，但是和data属性一样，是一下格式，将请求的json赋给这里的数据
+				data() {
+					//请求的返回参数格式，必须和json字符串一样
+					return{
+						info: {
+							name: null,
+							address: {
+								street: null,
+								city: null,
+								country: null
+							},
+							url: null
+						}
+					}
+				}
+				
+			});
+		</script>
+	</body>
+</html>
