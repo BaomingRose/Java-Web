@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--插槽slot-->
+<!--插槽就是把一大块视图中，中的一部分进行可嵌入插槽，可以动态的进行拔插-->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!--把下列标题变为插槽-->
+			<p>列表书籍</p>
+			<ul>
+			<!--把下列列表边为插槽-->
+				<li>Java</li>
+				<li>Linux</li>
+				<li>Python</li>
+			</ul>
+			
+			<!--下列使用自定义组件，插槽-->
+			<todo>
+				<todo-title slot="todo-title" v-bind:title="title"></todo-title>
+				<todo-items slot="todo-items" v-for="item in todoItems" :item="item"></todo-items>
+			</todo>
+		</div>
+		
+		
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+		<script>
+			//slot标签：插槽
+			Vue.component("todo", {
+				template: 
+				'<div>\
+					<slot name="todo-title"></slot>\
+					<ul>\
+						<slot name="todo-items"></slot>\
+					</ul>\
+				</div>'
+			});
+			
+			Vue.component("todo-title", {
+				//传递参数，实际相当于该自定义标签的属性
+				props: ['title'],
+				template:'<p>{{title}}</p>'
+			});
+			
+			Vue.component("todo-items", {
+				props:['item'],
+				template:'<li>{{item}}</li>'
+			});
+			
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					message: "123",
+					todoItems: ['Java', 'web', '前端', 'Linux'],
+					title: "课程"
+				}
+			});
+		</script>
+	</body>
+</html>
