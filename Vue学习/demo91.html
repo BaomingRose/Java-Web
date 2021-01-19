@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--计算属性-->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p>currentTime1：{{currentTime1()}}</p>
+			<p>currentTime2：{{currentTime2}}</p>
+			<!--第一个为方法，需要加括号；第二个为计算属性，不加括号-->
+		</div>
+		
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script>
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					message: "123"
+				},
+				
+				methods: {
+					currentTime1: function() {
+						return Date.now();		//返回当前时间戳
+					}
+				},
+				
+				computed: {	//计算属性，methods和computed方法不能重名，重名之后methods方法优先级高
+					currentTime2: function() {
+						this.message;	//如果message变化则重新计算
+						return Date.now();		//返回当前时间戳
+					}
+				}
+			});
+				
+		</script>
+	</body>
+</html>
