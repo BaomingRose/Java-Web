@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--自定义事件内容分发-->
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!--把下列标题变为插槽-->
+			<p>列表书籍</p>
+			<ul>
+			<!--把下列列表边为插槽-->
+				<li>Java</li>
+				<li>Linux</li>
+				<li>Python</li>
+			</ul>
+			
+			<!--下列使用自定义组件，插槽-->
+			<todo>
+				<todo-title slot="todo-title" v-bind:title="title"></todo-title>
+				<todo-items slot="todo-items" v-for="(item,index) in todoItems" 
+					:item="item" :index="index" v-on:remove="removeItems(index)"></todo-items>
+					<!--使用上边的事件绑定-->
+			</todo>
+		</div>
+		
+		
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+		<script>
+			//slot标签：插槽
+			Vue.component("todo", {
+				template: 
+				'<div>\
+					<slot name="todo-title"></slot>\
+					<ul>\
+						<slot name="todo-items"></slot>\
+					</ul>\
+				</div>'
+			});
+			
+			Vue.component("todo-title", {
+				//传递参数，实际相当于该自定义标签的属性
+				props: ['title'],
+				template:'<p>{{title}}</p>'
+			});
+			
+			Vue.component("todo-items", {
+				props:['item', 'index'],
+				template:'<li>{{index}}---{{item}} <button @click="remove">删除</button></li> ',
+				
+				//组件定义方法，现在要删除vm对象中的对象，如何删除？
+				methods: {
+					//组件如何删除Vue实例中的数据？使用this.$emit('自定义事件名', 参数)
+					remove: function(index) {
+						//自定义事件分发
+						this.$emit('remove', index);
+					}
+				}
+			});
+			
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					message: "123",
+					todoItems: ['Java', 'web', '前端', 'Linux'],
+					title: "课程"
+				},
+				
+				methods: {
+					//这里实现了删除列表中的项，参数为数组下标，可以在控制台中直接调用调式
+					removeItems: function(index) {
+						console.log("删除了" + this.todoItems[index] + "OK");
+						//从index位置删除1个元素
+						this.todoItems.splice(index, 1);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
