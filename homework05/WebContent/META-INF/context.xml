@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context reloadable = "true">
-<!--配置数据源-->
+<!--这里配置数据源-->
 <Resource
       name="jdbc/webstoreDS"
       type="javax.sql.DataSource" 
